@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums
 {
-    public enum UserRole
+    public enum UserPosition
     {
         Administrator,
         Manager,

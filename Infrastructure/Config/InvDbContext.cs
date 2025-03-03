@@ -17,6 +17,7 @@ namespace Infrastructure.Config
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<ProductHistory> ProductHistories { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +37,23 @@ namespace Infrastructure.Config
                       .OnDelete(DeleteBehavior.Cascade);
             });
 
+            // User
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(u => u.Id);
+                // Configurar el enum Position para almacenarlo como string
+                entity.Property(u => u.Position)
+                      .HasConversion<string>()
+                      .HasMaxLength(50)
+                      .IsRequired();
+
+                // Si deseas que el usuario tenga una colección de historiales:
+                entity.HasMany(u => u.ProductHistories)
+                      .WithOne(ph => ph.User)
+                      .HasForeignKey(ph => ph.UserId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
+
             // Store: each store has one Warehouse
             modelBuilder.Entity<Store>(entity =>
             {
@@ -46,6 +64,7 @@ namespace Infrastructure.Config
                 entity.Property(s => s.Address)
                       .HasMaxLength(300);
 
+                // Relación 1:1 entre Store y Warehouse (Warehouse es dependiente)
                 entity.HasOne(s => s.Warehouse)
                       .WithOne(w => w.Store)
                       .HasForeignKey<Warehouse>(w => w.StoreId)
@@ -96,7 +115,7 @@ namespace Infrastructure.Config
                       .HasColumnType("decimal(18,2)");
 
                 entity.HasOne(s => s.Store)
-                      .WithMany()  // Optionally, add a Sales collection in Store
+                      .WithMany() // Opcional: si agregas ICollection<Sale> en Store
                       .HasForeignKey(s => s.StoreId)
                       .OnDelete(DeleteBehavior.Cascade);
 
@@ -119,7 +138,7 @@ namespace Infrastructure.Config
             {
                 entity.HasKey(ph => ph.Id);
                 entity.Property(ph => ph.Action)
-                      .HasConversion<string>()   // Stores the enum as a string
+                      .HasConversion<string>()  // Almacena el enum como string
                       .HasMaxLength(50)
                       .IsRequired();
                 entity.Property(ph => ph.ChangedBy)
@@ -129,6 +148,12 @@ namespace Infrastructure.Config
                       .WithMany(p => p.ProductHistories)
                       .HasForeignKey(ph => ph.ProductId)
                       .OnDelete(DeleteBehavior.Cascade);
+
+                // Relación con User (ya configurada en User, pero se define aquí también para mayor claridad)
+                entity.HasOne(ph => ph.User)
+                      .WithMany(u => u.ProductHistories)
+                      .HasForeignKey(ph => ph.UserId)
+                      .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

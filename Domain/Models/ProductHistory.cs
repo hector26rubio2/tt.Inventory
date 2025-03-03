@@ -9,5 +9,7 @@
         public ActionType Action { get; set; } // Using enum for action type
         public DateTime ChangedAt { get; set; }
         public string? ChangedBy { get; set; }
+        public Guid UserId { get; set; }
+        public User User { get; set; }
     }
 }

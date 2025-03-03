@@ -8,6 +8,8 @@
         public string LastName { get; set; }
 
         // El cargo del usuario representado como un enum
-        public UserRole Role { get; set; }
+        public UserPosition Position { get; set; }
+
+        public ICollection<ProductHistory> ProductHistories { get; set; }
     }
 }
