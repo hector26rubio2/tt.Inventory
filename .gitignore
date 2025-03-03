@@ -1,1 +1,48 @@
 ﻿.vs
+﻿# Build results
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio cache/options directory
+.vs/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Auto generated files
+Generated\ Files/
+
+# MSTest test Results
+TestResults/
+
+# NCrunch
+.ncrunchproject
+.ncrunchsolution
+
+# Rider
+.idea/
+
+# NuGet
+*.nupkg
+# NuGet Packages Directory
+packages/
+# The packages folder can be ignored because of Package Restore
+# See https://learn.microsoft.com/nuget/consume-packages/package-restore for details
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# VS Code directories
+.vscode/
+.vs/
+# Others
+_ReSharper.Caches/
