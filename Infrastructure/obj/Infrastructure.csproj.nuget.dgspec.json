@@ -105,6 +105,9 @@
             "projectReferences": {
               "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Domain\\Domain.csproj"
+              },
+              "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Transport\\Transport.csproj": {
+                "projectPath": "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Transport\\Transport.csproj"
               }
             }
           }

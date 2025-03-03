@@ -2813,7 +2813,8 @@
       "Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 9.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.2",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
+      "Transport >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2851,6 +2852,9 @@
           "projectReferences": {
             "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Transport\\Transport.csproj": {
+              "projectPath": "C:\\Users\\Hector\\source\\repos\\TT.Inventory\\Transport\\Transport.csproj"
             }
           }
         }
